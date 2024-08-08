@@ -171,7 +171,7 @@ const NotiVideo = ({
       >
         Start Notifications
       </button>
-      <video ref={videoRef} width="960" height="720" controls>
+      <video muted className="hidden" ref={videoRef} width="960" height="720" controls>
         <source src="src/assets/video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
