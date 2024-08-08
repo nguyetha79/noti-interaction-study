@@ -1,4 +1,4 @@
-export const URL = "http://localhost:8000/api/";
+export const URL = "https://noti-interaction-study.onrender.com/api/";
 
 export async function postDataToServer(url: string, data: any): Promise<void> {
   try {
