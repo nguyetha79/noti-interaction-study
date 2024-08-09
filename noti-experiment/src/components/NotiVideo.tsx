@@ -159,7 +159,7 @@ const NotiVideo = ({
   }, [startNotifications, notifications]);
 
   return (
-    <div className=" flex flex-col items-center justify-center gap-4 ">
+    <div className=" flex flex-col gap-4 ">
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-4 px-4 border border-blue-700 rounded"
         onClick={() => {
