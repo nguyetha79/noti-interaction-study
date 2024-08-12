@@ -1,8 +1,7 @@
 import { NotificationDetail } from "@/data/prevNotifications";
 import { postDataToServer } from "@/utils/utils";
 import { SnackbarKey, useSnackbar } from "notistack";
-import { useEffect, useRef, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import CustomNoti from "./CustomNoti";
 
 declare module "notistack" {
@@ -22,6 +21,16 @@ const NotiVideo = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [notifications, setNotifications] = useState<NotificationDetail[]>([]);
   const [notificationShownTimestamps, setNotificationShownTimestamps] = useState<Map<SnackbarKey, number>>(new Map());
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('User ID:', userId);
+
+    setStartNotifications(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
 
   const action = (
     snackbarId: SnackbarKey | undefined,
@@ -105,10 +114,6 @@ const NotiVideo = ({
   };
 
   useEffect(() => {
-    setUserId(uuidv4());
-  }, []);
-
-  useEffect(() => {
     if (!startNotifications || !videoRef.current) return;
 
     const generateNotifications = () => {
@@ -159,23 +164,27 @@ const NotiVideo = ({
   }, [startNotifications, notifications]);
 
   return (
-    <div className=" flex flex-col gap-4 ">
+    <div className="m-4">
+    <form onSubmit={handleSubmit} className="flex flex-col w-48">
+      <input
+        type="text"
+        placeholder="Enter User ID"
+        value={userId}
+        onChange={(e) => setUserId(e.target.value)}
+        className="border border-gray-300 p-2 rounded my-3"
+      />
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-4 px-4 border border-blue-700 rounded"
-        onClick={() => {
-          setStartNotifications(true);
-          if (videoRef.current) {
-            videoRef.current.play();
-          }
-        }}
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
       >
         Start Notifications
       </button>
-      <video muted className="hidden" ref={videoRef} width="960" height="720" controls>
-        <source src="assets/video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    </form>
+    <video muted className="hidden" ref={videoRef} width="960" height="720" controls>
+      <source src="assets/video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
   );
 };
 
