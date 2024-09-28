@@ -1,3 +1,10 @@
+
+/*
+Title of program/source code: Notistack|Customization
+Type: source code
+Web address or publisher: hhttps://codesandbox.io/p/sandbox/github/iamhosseindhv/notistack/tree/master/examples/custom-snackbar-example-2
+*/
+
 import { NotificationDetail } from "@/data/prevNotifications";
 import { postDataToServer } from "@/utils/utils";
 import { SnackbarKey, useSnackbar } from "notistack";

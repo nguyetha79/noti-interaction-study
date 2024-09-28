@@ -1,3 +1,11 @@
+/*
+Author: Felix Owino
+Date: Nov 11, 2023
+Title of program/source code: How to Create Mongoose Models Using Typescript.
+Type: source code
+Web address or publisher: https://dev.to/ghostaram/how-to-create-mongoose-models-using-typescript-7hf
+*/
+
 import Notification from "../model/Notification";
 import { Request, Response } from "express";
 

@@ -1,3 +1,10 @@
+
+/*
+Title of program/source code: Notistack|Customization
+Type: source code
+Web address or publisher: hhttps://codesandbox.io/p/sandbox/github/iamhosseindhv/notistack/tree/master/examples/custom-snackbar-example-2
+*/
+
 import { useState, forwardRef, useCallback } from "react";
 import { postDataToServer } from "@/utils/utils";
 import clsx from "clsx";
